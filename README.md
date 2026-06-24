@@ -6,3 +6,7 @@ This repo has notes I kept along with some completed sample code from the lesson
 - The course uses RedHat/Fedora-based system, whereas I was using an Ubuntu/Debian-based virtual machine. This causes some slight discrepancies with some of the content. For example:
     * ***In Lesson 2***: `ls /lib/modules/$(uname -r)/kernel/fs/fat` on my VM only returned the compressed `msdos.ko` file. The authors had this along with a compressed `fat.ko` and `vfat.ko` file.
     * ***In Lesson 3***: The author's kernel level messages (those output with `sudo dmesg`) were located in `/var/log/messages`; my messages were located in `/var/log/kern.log` and `/var/log/syslog`
+
+
+***
+### I provide a PDF of the online course's notes, as well. It is named DeviceDriverFYGF.pdf
