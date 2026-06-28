@@ -13,7 +13,7 @@
 ```
 
 ### dmesg
-However, no matter the log level (the number associated with each macro above) the kernel's syslog daemon redirects messages to the log file `/var/log/kernel.log`
+However, no matter the log level (the number associated with each macro above) the kernel's syslog daemon redirects messages to the log file `/var/log/kern.log`
 But the messages from this file are only passed to the user-space by the `dmesg` command,which dumps the kernel ring buffer into standard output (the terminal)
 
 ***
