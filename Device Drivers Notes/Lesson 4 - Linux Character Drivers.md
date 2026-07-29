@@ -71,8 +71,13 @@ int alloc_chrdev_region(
 ```
 a. Registers `cnt` number of device file numbers starting from first
 b. Dynamically finds free mjaor number and registers `cnt`
- number of device file numbers from the first free major
+number of device file numbers from `<the free major,firstminor>` with the name
 ### 2. Linking the device file operations to the device driver functions
+Changes: we added the line below:
+```C
+// Dynamically find free major #, start w/minor # 0, allocate 3 device file number pairs
+ret = alloc_chrdev_region(&first, 0, 3, "Will")
+```
 #### *Changes made to ofd.c in the Lesson4 directory*
 The same steps are followed the load and check on the driver:
 1. Build the driver (`.ko` file) with `make`
@@ -81,7 +86,7 @@ The same steps are followed the load and check on the driver:
 
 ![4c8143863073d1e4f6b0c8208e715537.png](../_resources/CharDriver_output1.png)
 
-As seen here, the char device named "Will" has major # 239. However, there are no device files present in the `/dev/` directory with major number 239 or the device name "Will" (the one shown has major # 10, *minor* 239). **You must create them with `mknod` (shown below).**
+As seen here, in the `/proc/devices` directory the char device named "Will" has major # 239. However, there are no device files present in the `/dev/` directory with major number 239 or the device name "Will" (the one shown has major # 10, *minor* 239). **You must create them with `mknod` (shown below).**
 ![184be652262eaa42e779d1f86b9dabe8.png](../_resources/CharDriver_output2.png)
 
 ##### Writing (`echo " " >`) and reading (`cat`) from the driver will not work yet, however. As mentioned before, device file operations still need to be linked... (Lesson 5)
